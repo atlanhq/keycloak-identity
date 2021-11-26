@@ -175,7 +175,7 @@ public class TokenVerifier<T extends JsonWebToken> {
             if (expectedIssuedFor == null) {
                 throw new VerificationException("Missing expectedIssuedFor");
             }
-            return true
+            return true;
 //             if (expectedIssuedFor.equals(jsonWebToken.getIssuedFor())) {
 //                 return true;
 //             }
