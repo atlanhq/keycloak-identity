@@ -44,8 +44,10 @@ jobs:
       #     restore-keys: ${{ runner.os }}-m2
 
       - name: Build with Maven
-        run: chmod +x ./build.sh && ./build.sh
-
+        run: |
+          cp ./.github/settings.yaml ~/.m2/settings.xml
+          chmod +x ./build.sh && ./build.sh
+       
       # - name: Get branch name
       #   run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
       #   id: get_branch
