@@ -48,15 +48,8 @@ jobs:
           cp ./maven-settings.xml ~/.m2/settings.xml
           chmod +x ./build.sh && ./build.sh
 
-  deploy:
-    name: Deploy on S3
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          ref: 15.0.2
-      - uses: jakejarvis/s3-sync-action@master
+      - name: Deploy on S3
+        uses: jakejarvis/s3-sync-action@master
         with:
           args: --acl public-read --follow-symlinks --delete
         env:
@@ -64,5 +57,6 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{secrets.ATLAN_IT_S3_AWS_ACCESS_KEY_ID}}
           AWS_SECRET_ACCESS_KEY: ${{secrets.ATLAN_IT_S3_AWS_SECRET_ACCESS_KEY}}
           AWS_REGION: 'ap-south-1'
-          SOURCE_DIR: 'distribution/server-dist/target'
-          DEST_DIR: 'artifact'
+          SOURCE_DIR: 'distribution/server-dist/target/keycloak-15.0.2.tar.gz'
+          DEST_DIR: 'artifact/keycloak-15.0.2.tar.gz'
+      
