@@ -57,6 +57,6 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{secrets.ATLAN_IT_S3_AWS_ACCESS_KEY_ID}}
           AWS_SECRET_ACCESS_KEY: ${{secrets.ATLAN_IT_S3_AWS_SECRET_ACCESS_KEY}}
           AWS_REGION: 'ap-south-1'
-          SOURCE_DIR: 'distribution/server-dist/target/keycloak-15.0.2.tar.gz'
-          DEST_DIR: 'artifact/keycloak-15.0.2.tar.gz'
+          SOURCE_DIR: 'distribution/server-dist/target'
+          DEST_DIR: 'artifact'
       
