@@ -18,7 +18,7 @@
 
 
 echo "Maven Building"
-mvn clean install -Pdistribution
+mvn clean install -Pdistribution -DskipTests -DskipTestsuite
 
 # echo "[list]"
 # ls
