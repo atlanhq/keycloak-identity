@@ -23,8 +23,9 @@ mvn clean install -Pdistribution -DskipTests -DskipTestsuite
 # echo "[list]"
 # ls
 
-echo "[DEBUG listing distribution"
+echo "[DEBUG listing distribution]"
 ls distribution
+ls distribution/server-dist
 
 # echo "[DEBUG] listing local directory"
 # ls target
