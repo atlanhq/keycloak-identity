@@ -18,14 +18,14 @@
 
 
 echo "Maven Building"
-mvn clean install -Pdistribution -Dmaven.test.skip
+mvn clean install -Pdistribution
 
-echo "[list]"
-ls
+# echo "[list]"
+# ls
 
-echo "[DEBUG listing distro/target"
-ls distro/target
+echo "[DEBUG listing distribution"
+ls distribution
 
-echo "[DEBUG] listing local directory"
-ls target
+# echo "[DEBUG] listing local directory"
+# ls target
 
