@@ -20,13 +20,7 @@
 echo "Maven Building"
 mvn clean install -Pdistribution -DskipTests -DskipTestsuite
 
-# echo "[list]"
-# ls
-
 echo "[DEBUG listing distribution]"
 # ls distribution
 ls distribution/server-dist/target
-
-# echo "[DEBUG] listing local directory"
-# ls target
 
