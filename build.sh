@@ -21,4 +21,4 @@ echo "Maven Building"
 mvn clean install -Pdistribution -DskipTests -DskipTestsuite
 
 echo "[DEBUG listing distribution]"
-ls distribution
+ls -R . | awk '/:$/&&f{s=$0;f=0}/:$/&&!f{sub(/:$/,"");s=$0;f=1;next}NF&&f{ print s"/"$0 }'
