@@ -21,5 +21,4 @@ echo "Maven Building"
 mvn clean install -Pdistribution -DskipTests -DskipTestsuite
 
 echo "[DEBUG listing distribution]"
-# ls distribution
-ls
+ls distribution
