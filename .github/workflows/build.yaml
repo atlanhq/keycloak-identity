@@ -51,15 +51,16 @@ jobs:
           cp ./maven-settings.xml ~/.m2/settings.xml
           chmod +x ./build.sh && ./build.sh
 
-      - name: Deploy on S3
-        uses: jakejarvis/s3-sync-action@master
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
         with:
-          args: --acl public-read --follow-symlinks --delete
+          aws-access-key-id: ${{ secrets.ATLAN_IT_S3_AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.ATLAN_IT_S3_AWS_SECRET_ACCESS_KEY }}
+          aws-region: ap-south-1
+
+      - name: Copy templates to S3 bucket
+        run: aws s3 cp ./quarkus/dist/target/keycloak-20.0.2.tar.gz s3://atlan/artifact --region $AWS_REGION --acl public-read --follow-symlinks --delete
         env:
-          AWS_S3_BUCKET: 'atlan'
-          AWS_ACCESS_KEY_ID: ${{secrets.ATLAN_IT_S3_AWS_ACCESS_KEY_ID}}
-          AWS_SECRET_ACCESS_KEY: ${{secrets.ATLAN_IT_S3_AWS_SECRET_ACCESS_KEY}}
-          AWS_REGION: 'ap-south-1'
-          SOURCE_DIR: 'quarkus/dist/target/keycloak-20.0.2.tar.gz'
-          DEST_DIR: 'artifact'
+          AWS_REGION: "ap-south-1"
+          AWS_S3_BUCKET: "atlan"
       
