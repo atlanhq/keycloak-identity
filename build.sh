@@ -22,4 +22,4 @@ mvn clean install -Pdistribution -DskipTests -DskipTestsuite
 
 echo "[DEBUG listing distribution]"
 # ls distribution
-ls distribution/server-dist/target
+ls
