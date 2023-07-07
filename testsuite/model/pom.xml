@@ -22,7 +22,7 @@
         <keycloak.connectionsJpa.url>jdbc:h2:mem:test;MVCC=TRUE;DB_CLOSE_DELAY=-1</keycloak.connectionsJpa.url>
         <jdbc.mvn.groupId>com.h2database</jdbc.mvn.groupId>
         <jdbc.mvn.artifactId>h2</jdbc.mvn.artifactId>
-        <jdbc.mvn.version>${h2.version}</jdbc.mvn.version>
+        <jdbc.mvn.version>2.2.220</jdbc.mvn.version>
         <log4j.configuration>file:${project.build.directory}/dependency/log4j.properties</log4j.configuration>
         <jacoco.skip>true</jacoco.skip>
         <keycloak.profile.feature.map_storage>disabled</keycloak.profile.feature.map_storage>
