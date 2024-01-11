@@ -69,7 +69,12 @@ public class IdpEmailVerificationAuthenticator extends AbstractIdpAuthenticator 
             return;
         }
 
+
+        logger.infof("Arpit authSession.getAuthNote(VERIFY_ACCOUNT_IDP_USERNAME) '%s' ", authSession.getAuthNote(VERIFY_ACCOUNT_IDP_USERNAME));
+        logger.infof("Arpit brokerContext.getUsername() '%s' ", brokerContext.getUsername());
+        logger.infof("Arpit brokerContext '%s' ", brokerContext.toString());
         if (Objects.equals(authSession.getAuthNote(VERIFY_ACCOUNT_IDP_USERNAME), brokerContext.getUsername())) {
+            logger.infof("first if executed");
             UserModel existingUser = getExistingUser(session, realm, authSession);
 
             logger.debugf("User '%s' confirmed that wants to link with identity provider '%s' . Identity provider username is '%s' ", existingUser.getUsername(),
@@ -82,8 +87,13 @@ public class IdpEmailVerificationAuthenticator extends AbstractIdpAuthenticator 
 
         UserModel existingUser = getExistingUser(session, realm, authSession);
 
+
+        logger.infof("Arpit authSession.getAuthNote(Constants.VERIFY_EMAIL_KEY) '%s' ", authSession.getAuthNote(VERIFY_ACCOUNT_IDP_USERNAME));
+        logger.infof("Arpit existingUser.getEmail() '%s' ", existingUser.getEmail());
+        logger.infof("Arpit existingUser '%s' ", existingUser);
         // Do not allow resending e-mail by simple page refresh
         if (! Objects.equals(authSession.getAuthNote(Constants.VERIFY_EMAIL_KEY), existingUser.getEmail())) {
+            logger.infof("Arpit Second if executed");
             authSession.setAuthNote(Constants.VERIFY_EMAIL_KEY, existingUser.getEmail());
             sendVerifyEmail(session, context, existingUser, brokerContext);
         } else {
