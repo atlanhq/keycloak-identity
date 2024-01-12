@@ -88,7 +88,7 @@ public class IdpEmailVerificationAuthenticator extends AbstractIdpAuthenticator 
         UserModel existingUser = getExistingUser(session, realm, authSession);
 
 
-        logger.infof("Arpit authSession.getAuthNote(Constants.VERIFY_EMAIL_KEY) '%s' ", authSession.getAuthNote(VERIFY_ACCOUNT_IDP_USERNAME));
+        logger.infof("Arpit authSession.getAuthNote(Constants.VERIFY_EMAIL_KEY) '%s' ", authSession.getAuthNote(Constants.VERIFY_EMAIL_KEY));
         logger.infof("Arpit existingUser.getEmail() '%s' ", existingUser.getEmail());
         logger.infof("Arpit existingUser '%s' ", existingUser);
         // Do not allow resending e-mail by simple page refresh
@@ -184,6 +184,6 @@ public class IdpEmailVerificationAuthenticator extends AbstractIdpAuthenticator 
                 .setExecution(context.getExecution().getId())
                 .createIdpLinkEmailPage();
         context.forceChallenge(challenge);
-    }
+
 
 }
