@@ -22,7 +22,6 @@ on:
   push:
     branches:
       - 20.0.2
-      - PLT-865-token-exchange-update
 
 jobs:
   build:
@@ -60,7 +59,7 @@ jobs:
           aws-region: ap-south-1
 
       - name: Copy build to S3 bucket
-        run: aws s3 cp ./quarkus/dist/target/keycloak-20.0.2.tar.gz s3://atlan/artifact/keycloak-20.0.3.tar.gz --region $AWS_REGION
+        run: aws s3 cp ./quarkus/dist/target/keycloak-20.0.2.tar.gz s3://atlan/artifact/keycloak-20.0.2.tar.gz --region $AWS_REGION
         env:
           AWS_REGION: "ap-south-1"
           AWS_S3_BUCKET: "atlan"
