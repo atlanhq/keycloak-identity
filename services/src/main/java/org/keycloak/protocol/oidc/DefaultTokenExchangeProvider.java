@@ -197,6 +197,15 @@ public class DefaultTokenExchangeProvider implements TokenExchangeProvider {
 
             }
 
+            if (!requestedUser.isEnabled()) {
+                // Return access denied for disabled user
+                event.detail(Details.REASON, "requested_subject is disabled");
+                event.error(Errors.NOT_ALLOWED);
+                throw new CorsErrorResponseException(cors, OAuthErrorException.ACCESS_DENIED, "Client not allowed to exchange", Response.Status.FORBIDDEN);
+
+            }
+
+
             if (token != null) {
                 event.detail(Details.IMPERSONATOR, tokenUser.getUsername());
                 // for this case, the user represented by the token, must have permission to impersonate.
