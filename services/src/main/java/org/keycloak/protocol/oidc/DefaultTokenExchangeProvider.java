@@ -134,7 +134,7 @@ public class DefaultTokenExchangeProvider implements TokenExchangeProvider {
         UserModel tokenUser = null;
         UserSessionModel tokenSession = null;
         AccessToken token = null;
-
+        logger.error("Inside the token exchange method");
         String subjectToken = formParams.getFirst(OAuth2Constants.SUBJECT_TOKEN);
         if (subjectToken != null) {
             String subjectTokenType = formParams.getFirst(OAuth2Constants.SUBJECT_TOKEN_TYPE);
@@ -197,12 +197,13 @@ public class DefaultTokenExchangeProvider implements TokenExchangeProvider {
 
             }
 
+            logger.error("Requested subject is " + requestedUser.getUsername() + " and enabled status is" + requestedUser.isEnabled());
             if (!requestedUser.isEnabled()) {
                 // Return access denied for disabled user
+                logger.error("Requested subject is " + requestedUser.getUsername());
                 event.detail(Details.REASON, "requested_subject is disabled");
                 event.error(Errors.NOT_ALLOWED);
                 throw new CorsErrorResponseException(cors, OAuthErrorException.ACCESS_DENIED, "Client not allowed to exchange", Response.Status.FORBIDDEN);
-
             }
 
 
