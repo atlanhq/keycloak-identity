@@ -19,7 +19,6 @@ package org.keycloak.admin.client.token;
 
 import javax.ws.rs.client.WebTarget;
 
-import org.jboss.logging.Logger;
 import org.jboss.resteasy.client.jaxrs.ResteasyClient;
 import org.jboss.resteasy.client.jaxrs.ResteasyWebTarget;
 import org.keycloak.admin.client.Config;
@@ -45,7 +44,6 @@ import static org.keycloak.OAuth2Constants.USERNAME;
  */
 public class TokenManager {
     private static final long DEFAULT_MIN_VALIDITY = 30;
-    private static final Logger logger = Logger.getLogger(TokenManager.class);
     private AccessTokenResponse currentToken;
     private long expirationTime;
     private long refreshExpirationTime;
@@ -82,7 +80,6 @@ public class TokenManager {
     }
 
     public AccessTokenResponse grantToken() {
-        logger.error("Inside grant token change in token manager");
         Form form = new Form().param(GRANT_TYPE, accessTokenGrantType);
         if (PASSWORD.equals(accessTokenGrantType)) {
             form.param(USERNAME, config.getUsername())
