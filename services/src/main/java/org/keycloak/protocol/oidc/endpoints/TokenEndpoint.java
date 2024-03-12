@@ -172,7 +172,6 @@ public class TokenEndpoint {
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @POST
     public Response processGrantRequest() {
-        logger.error("called the grant request here for access token");
         cors = Cors.add(request).auth().allowedMethods("POST").auth().exposedHeaders(Cors.ACCESS_CONTROL_ALLOW_METHODS);
 
         MultivaluedMap<String, String> formParameters = request.getDecodedFormParameters();
