@@ -564,8 +564,8 @@ public class XMLSignatureUtil {
         X509Certificate cert = null;
         StringBuilder builder = new StringBuilder();
         logger.error("certificateString before any change " + certificateString);
-        String certificateString1 = certificateString.replace(PemUtils.BEGIN_CERT, "");
-        String certificateString2 = certificateString1.replace(PemUtils.END_CERT, "");
+        String certificateString1 = certificateString.replace("-----BEGINCERTIFICATE-----", "").trim();
+        String certificateString2 = certificateString1.replace("-----ENDCERTIFICATE-----", "").trim();
         logger.error("certificateString after change 1" + certificateString2);
         builder.append(PemUtils.BEGIN_CERT + "\n").append(certificateString2).append("\n" + PemUtils.END_CERT);
 
