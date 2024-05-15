@@ -563,32 +563,15 @@ public class XMLSignatureUtil {
     public static X509Certificate getX509CertificateFromKeyInfoString(String certificateString) throws ProcessingException {
         X509Certificate cert = null;
         StringBuilder builder = new StringBuilder();
-
-        boolean isCertAdded = false;
-
-        // Check and append the BEGIN_CERT header if not present
-        if (!certificateString.startsWith(PemUtils.BEGIN_CERT)) {
-            builder.append(PemUtils.BEGIN_CERT).append("\n").append(certificateString);
-            isCertAdded = true;
-        }
-
-        // Check and append the END_CERT footer if not present
-        if (!certificateString.endsWith(PemUtils.END_CERT)) {
-            if (!isCertAdded) {
-                builder.append(certificateString).append("\n").append(PemUtils.END_CERT);
-            } else {
-                builder.append("\n").append(PemUtils.END_CERT);
-            }
-        }
-
-        // If the builder is still empty, append the original certificate string
-        if (builder.length() == 0) {
-            builder.append(certificateString);
-        }
-
+        logger.error("certificateString before any change " + certificateString);
+        String certificateString1 = certificateString.replace(PemUtils.BEGIN_CERT, "");
+        String certificateString2 = certificateString1.replace(PemUtils.END_CERT, "");
+        logger.error("certificateString after change 1" + certificateString2);
+        builder.append(PemUtils.BEGIN_CERT + "\n").append(certificateString2).append("\n" + PemUtils.END_CERT);
 
         String derFormattedString = builder.toString();
 
+        logger.error("certificateString after change 2" + derFormattedString);
         try {
             CertificateFactory cf = CertificateFactory.getInstance("X.509");
             ByteArrayInputStream bais = new ByteArrayInputStream(derFormattedString.getBytes(GeneralConstants.SAML_CHARSET));
