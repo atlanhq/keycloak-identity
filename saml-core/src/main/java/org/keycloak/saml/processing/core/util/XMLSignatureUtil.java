@@ -563,15 +563,15 @@ public class XMLSignatureUtil {
     public static X509Certificate getX509CertificateFromKeyInfoString(String certificateString) throws ProcessingException {
         X509Certificate cert = null;
         StringBuilder builder = new StringBuilder();
-        logger.error("certificateString before any change " + certificateString);
+
+        //to remove header and footer which are not in format
         String certificateString1 = certificateString.replace("-----BEGINCERTIFICATE-----", "").trim();
         String certificateString2 = certificateString1.replace("-----ENDCERTIFICATE-----", "").trim();
-        logger.error("certificateString after change 1" + certificateString2);
+
         builder.append(PemUtils.BEGIN_CERT + "\n").append(certificateString2).append("\n" + PemUtils.END_CERT);
 
         String derFormattedString = builder.toString();
 
-        logger.error("certificateString after change 2" + derFormattedString);
         try {
             CertificateFactory cf = CertificateFactory.getInstance("X.509");
             ByteArrayInputStream bais = new ByteArrayInputStream(derFormattedString.getBytes(GeneralConstants.SAML_CHARSET));
