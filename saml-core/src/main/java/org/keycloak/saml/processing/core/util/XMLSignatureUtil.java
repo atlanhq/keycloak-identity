@@ -89,6 +89,7 @@ import javax.xml.crypto.KeySelectorException;
 import javax.xml.crypto.KeySelectorResult;
 import javax.xml.crypto.XMLCryptoContext;
 import javax.xml.crypto.dsig.keyinfo.KeyName;
+
 import org.keycloak.rotation.KeyLocator;
 import org.keycloak.saml.common.util.SecurityActions;
 import org.keycloak.saml.processing.api.util.KeyInfoTools;
@@ -143,7 +144,8 @@ public class XMLSignatureUtil {
                 final Key key = locator.getKey(keyName);
                 this.keyLocated = key != null;
                 return new KeySelectorResult() {
-                    @Override public Key getKey() {
+                    @Override
+                    public Key getKey() {
                         return key;
                     }
                 };
@@ -169,7 +171,8 @@ public class XMLSignatureUtil {
         @Override
         public KeySelectorResult select(KeyInfo keyInfo, KeySelector.Purpose purpose, AlgorithmMethod method, XMLCryptoContext context) {
             return new KeySelectorResult() {
-                @Override public Key getKey() {
+                @Override
+                public Key getKey() {
                     return key;
                 }
             };
@@ -195,7 +198,6 @@ public class XMLSignatureUtil {
      * Use this method to not include the KeyInfo in the signature
      *
      * @param includeKeyInfoInSignature
-     *
      * @since v2.0.1
      */
     public static void setIncludeKeyInfoInSignature(boolean includeKeyInfoInSignature) {
@@ -211,9 +213,7 @@ public class XMLSignatureUtil {
      * @param digestMethod
      * @param signatureMethod
      * @param referenceURI
-     *
      * @return
-     *
      * @throws ParserConfigurationException
      * @throws XMLSignatureException
      * @throws MarshalException
@@ -271,13 +271,12 @@ public class XMLSignatureUtil {
     /**
      * Sign only specified element (assumption is that it already has ID attribute set)
      *
-     * @param elementToSign element to sign with set ID
-     * @param nextSibling child of elementToSign, which will be used as next sibling of created signature
+     * @param elementToSign   element to sign with set ID
+     * @param nextSibling     child of elementToSign, which will be used as next sibling of created signature
      * @param keyPair
      * @param digestMethod
      * @param signatureMethod
      * @param referenceURI
-     *
      * @throws GeneralSecurityException
      * @throws MarshalException
      * @throws XMLSignatureException
@@ -291,14 +290,13 @@ public class XMLSignatureUtil {
     /**
      * Sign only specified element (assumption is that it already has ID attribute set)
      *
-     * @param elementToSign element to sign with set ID
-     * @param nextSibling child of elementToSign, which will be used as next sibling of created signature
+     * @param elementToSign   element to sign with set ID
+     * @param nextSibling     child of elementToSign, which will be used as next sibling of created signature
      * @param keyPair
      * @param digestMethod
      * @param signatureMethod
      * @param referenceURI
      * @param x509Certificate {@link X509Certificate} to be placed in SignedInfo
-     *
      * @throws GeneralSecurityException
      * @throws MarshalException
      * @throws XMLSignatureException
@@ -339,9 +337,7 @@ public class XMLSignatureUtil {
      * @param digestMethod
      * @param signatureMethod
      * @param referenceURI
-     *
      * @return
-     *
      * @throws GeneralSecurityException
      * @throws XMLSignatureException
      * @throws MarshalException
@@ -358,9 +354,7 @@ public class XMLSignatureUtil {
      * @param digestMethod
      * @param signatureMethod
      * @param referenceURI
-     *
      * @return
-     *
      * @throws GeneralSecurityException
      * @throws XMLSignatureException
      * @throws MarshalException
@@ -385,9 +379,7 @@ public class XMLSignatureUtil {
     /**
      * Sign the root element
      *
-     *
      * @return
-     *
      * @throws GeneralSecurityException
      * @throws XMLSignatureException
      * @throws MarshalException
@@ -426,9 +418,7 @@ public class XMLSignatureUtil {
      *
      * @param signedDoc
      * @param publicKey
-     *
      * @return
-     *
      * @throws MarshalException
      * @throws XMLSignatureException
      */
@@ -462,7 +452,7 @@ public class XMLSignatureUtil {
                 }
             }
 
-            if (! validateSingleNode(signatureNode, locator)) return false;
+            if (!validateSingleNode(signatureNode, locator)) return false;
         }
 
         NodeList assertions = signedDoc.getElementsByTagNameNS(assertionNameSpaceUri, JBossSAMLConstants.ASSERTION.get());
@@ -519,7 +509,7 @@ public class XMLSignatureUtil {
         XMLSignature signature = fac.unmarshalXMLSignature(valContext);
         boolean coreValidity = signature.validate(valContext);
 
-        if (! coreValidity) {
+        if (!coreValidity) {
             if (logger.isTraceEnabled()) {
                 boolean sv = signature.getSignatureValue().validate(valContext);
                 logger.trace("Signature validation status: " + sv);
@@ -539,7 +529,6 @@ public class XMLSignatureUtil {
      *
      * @param signature
      * @param os
-     *
      * @throws SAXException
      * @throws JAXBException
      */
@@ -556,7 +545,6 @@ public class XMLSignatureUtil {
      *
      * @param signedDocument
      * @param os
-     *
      * @throws TransformerException
      */
     public static void marshall(Document signedDocument, OutputStream os) throws TransformerException {
@@ -569,23 +557,21 @@ public class XMLSignatureUtil {
      * Given the X509Certificate in the keyinfo element, get a {@link X509Certificate}
      *
      * @param certificateString
-     *
      * @return
-     *
      * @throws org.keycloak.saml.common.exceptions.ProcessingException
      */
     public static X509Certificate getX509CertificateFromKeyInfoString(String certificateString) throws ProcessingException {
         X509Certificate cert = null;
         StringBuilder builder = new StringBuilder();
-        logger.error("certificateString before any change "+ certificateString);
+        logger.error("certificateString before any change " + certificateString);
         String certificateString1 = certificateString.replace(PemUtils.BEGIN_CERT, "");
         String certificateString2 = certificateString1.replace(PemUtils.END_CERT, "");
-        logger.error("certificateString after change 1"+ certificateString2);
+        logger.error("certificateString after change 1" + certificateString2);
         builder.append(PemUtils.BEGIN_CERT + "\n").append(certificateString2).append("\n" + PemUtils.END_CERT);
 
         String derFormattedString = builder.toString();
 
-        logger.error("certificateString after change 2"+ derFormattedString);
+        logger.error("certificateString after change 2" + derFormattedString);
         try {
             CertificateFactory cf = CertificateFactory.getInstance("X.509");
             ByteArrayInputStream bais = new ByteArrayInputStream(derFormattedString.getBytes(GeneralConstants.SAML_CHARSET));
@@ -603,9 +589,7 @@ public class XMLSignatureUtil {
      * Given a dsig:DSAKeyValue element, return {@link DSAKeyValueType}
      *
      * @param element
-     *
      * @return
-     *
      * @throws ProcessingException
      */
     public static DSAKeyValueType getDSAKeyValue(Element element) throws ParsingException {
@@ -644,9 +628,7 @@ public class XMLSignatureUtil {
      * Given a dsig:DSAKeyValue element, return {@link DSAKeyValueType}
      *
      * @param element
-     *
      * @return
-     *
      * @throws ProcessingException
      */
     public static RSAKeyValueType getRSAKeyValue(Element element) throws ParsingException {
@@ -679,9 +661,8 @@ public class XMLSignatureUtil {
      * </p>
      *
      * @param key the {@code PublicKey} that will be represented as a {@code KeyValueType}.
-     *
      * @return the constructed {@code KeyValueType} or {@code null} if the specified key is neither a DSA nor a RSA
-     *         key.
+     * key.
      */
     public static KeyValueType createKeyValue(PublicKey key) {
         if (key instanceof RSAPublicKey) {
