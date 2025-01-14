@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!--
-  ~ * Copyright 2021 Red Hat, Inc. and/or its affiliates
+  ~ * Copyright 2022 Red Hat, Inc. and/or its affiliates
   ~ * and other contributors as indicated by the @author tags.
   ~ *
   ~ * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,10 +17,7 @@
   -->
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
-
-    <changeSet author="keycloak" id="KEYCLOAK-17267-add-index-to-user-attributes">
-        <validCheckSum>7:1a7f28ff8d9e53aeb879d76ea3d9341a</validCheckSum>
-
+    <changeSet author="keycloak" id="KEYCLOAK-17269-add-index-to-user-attributes">
         <!-- Precondition to ensure the index doesn't already exist -->
         <preConditions onFail="MARK_RAN">
             <not>
