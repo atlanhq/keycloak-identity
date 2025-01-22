@@ -102,6 +102,22 @@
         </createIndex>
     </changeSet>
 
+    <changeSet author="keycloak" id="KEYCLOAK-17267-add-index-to-user-attributes">
+        <validCheckSum>7:1a7f28ff8d9e53aeb879d76ea3d9341a</validCheckSum>
+
+        <!-- Precondition to ensure the index doesn't already exist -->
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <indexExists indexName="IDX_USER_ATTRIBUTE_NAME" tableName="USER_ATTRIBUTE"/>
+            </not>
+        </preConditions>
+
+        <createIndex indexName="IDX_USER_ATTRIBUTE_NAME" tableName="USER_ATTRIBUTE">
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="VALUE" type="VARCHAR(255)"/>
+        </createIndex>
+    </changeSet>
+
     <changeSet author="keycloak" id="KEYCLOAK-18146-add-saml-art-binding-identifier">
         <validCheckSum>7:2fd554456fed4a82c698c555c5b751b6</validCheckSum>
         <customChange class="org.keycloak.connections.jpa.updater.liquibase.custom.JpaUpdate14_0_0_MigrateSamlArtifactAttribute"/>
