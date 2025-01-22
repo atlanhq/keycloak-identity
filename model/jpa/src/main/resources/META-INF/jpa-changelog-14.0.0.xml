@@ -104,7 +104,6 @@
 
     <changeSet author="keycloak" id="KEYCLOAK-17267-add-index-to-user-attributes">
         <validCheckSum>7:1a7f28ff8d9e53aeb879d76ea3d9341a</validCheckSum>
-
         <createIndex indexName="IDX_USER_ATTRIBUTE_NAME" tableName="USER_ATTRIBUTE">
             <column name="NAME" type="VARCHAR(255)"/>
             <column name="VALUE" type="VARCHAR(255)"/>
