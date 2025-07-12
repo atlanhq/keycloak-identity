@@ -40,7 +40,7 @@
             See https://github.com/quarkusio/quarkus/blob/<versionTag>/bom/application/pom.xml
             for reference
         -->
-        <resteasy.version>4.7.3.Final</resteasy.version>
+        <resteasy.version>4.7.5.Final</resteasy.version>
         <jackson.version>2.12.5</jackson.version>
         <jackson.databind.version>${jackson.version}</jackson.databind.version>
         <hibernate.core.version>5.6.1.Final</hibernate.core.version>
@@ -48,7 +48,7 @@
         <postgresql.version>42.2.24</postgresql.version>
         <microprofile-metrics-api.version>3.0</microprofile-metrics-api.version>
         <wildfly.common.version>1.5.4.Final-format-001</wildfly.common.version>
-        <infinispan.version>13.0.0.Final</infinispan.version>
+        <infinispan.version>14.0.14.Final</infinispan.version>
         <xmlsec.version>2.1.7</xmlsec.version>
 
         <!--
