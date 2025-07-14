@@ -31,7 +31,7 @@
     <name>DB Allocator Plugin</name>
 
     <properties>
-        <maven.version>3.3.9</maven.version>
+        <maven.version>3.9.8</maven.version>
     </properties>
 
     <dependencies>
