@@ -121,7 +121,7 @@
 
         <!-- Others -->
         <commons-lang.version>2.6</commons-lang.version>
-        <commons-lang3.version>3.11</commons-lang3.version>
+        <commons-lang3.version>3.18.0</commons-lang3.version>
         <commons-io.version>2.7</commons-io.version>
         <apacheds.version>2.0.0.AM26</apacheds.version>
         <apacheds.codec.version>2.0.0</apacheds.codec.version>
@@ -254,7 +254,7 @@
         </developer>
     </developers>
 
-    <contributors></contributors>
+    <contributors/>
 
     <modules>
         <module>boms</module>
