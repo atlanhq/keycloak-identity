@@ -55,7 +55,7 @@
         <wildfly.version>23.0.2.Final</wildfly.version>
         <wildfly.build-tools.version>1.2.13.Final</wildfly.build-tools.version>
         <eap.version>7.4.0.GA-redhat-00005</eap.version>
-        <wildfly.core.version>15.0.1.Final</wildfly.core.version>
+        <wildfly.core.version>19.0.0.Final</wildfly.core.version>
 
         <jboss.as.version>7.2.0.Final</jboss.as.version>
         <jboss.as.subsystem.test.version>7.5.22.Final-redhat-1</jboss.as.subsystem.test.version>
@@ -254,7 +254,7 @@
         </developer>
     </developers>
 
-    <contributors></contributors>
+    <contributors/>
 
     <modules>
         <module>boms</module>
@@ -1948,7 +1948,7 @@
                 <apache.httpcomponents.fuse.version>4.5.2</apache.httpcomponents.fuse.version>
                 <apache.httpcomponents.httpcore.fuse.version>4.4.4</apache.httpcomponents.httpcore.fuse.version>
                 <ee.maven.groupId>org.wildfly</ee.maven.groupId>
-                <ee.maven.version>${wildfly.version}</ee.maven.version>
+                <ee.maven.version>27.0.0.Final</ee.maven.version>
                 <product.filename.version>${project.version}</product.filename.version>
             </properties>
         </profile>
@@ -1984,7 +1984,7 @@
                 <apache.httpcomponents.httpcore.fuse.version>4.4.4.redhat-2</apache.httpcomponents.httpcore.fuse.version>
                 <product.default-profile>product</product.default-profile>
                 <ee.maven.groupId>org.jboss.eap</ee.maven.groupId>
-                <ee.maven.version>${eap.version}</ee.maven.version>
+                <ee.maven.version>27.0.0.Final</ee.maven.version>
                 <!-- Properties that drive the names of various directories produced by and used in the build -->
                 <server.output.dir.prefix>${product.name}</server.output.dir.prefix>
                 <!-- Version suffix that is appended to directories. Default is the maven GAV version but this can be edited to use a short form version -->
