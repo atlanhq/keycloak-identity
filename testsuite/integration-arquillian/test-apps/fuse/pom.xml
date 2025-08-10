@@ -31,7 +31,7 @@
     <groupId>org.keycloak.testsuite</groupId>
     <packaging>pom</packaging>
     <properties>
-        <camel.version>2.21.2</camel.version>
+        <camel.version>3.20.8</camel.version>
     </properties>
     <modules>
         <module>customer-app-fuse</module>
