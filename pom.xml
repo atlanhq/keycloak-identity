@@ -117,7 +117,7 @@
         <google.guava.version>30.1-jre</google.guava.version>
 
         <!-- Openshift -->
-        <version.com.openshift.openshift-restclient-java>8.0.0.Final</version.com.openshift.openshift-restclient-java>
+        <version.com.openshift.openshift-restclient-java>9.0.4.Final</version.com.openshift.openshift-restclient-java>
 
         <!-- Others -->
         <commons-lang.version>2.6</commons-lang.version>
@@ -254,7 +254,7 @@
         </developer>
     </developers>
 
-    <contributors></contributors>
+    <contributors/>
 
     <modules>
         <module>boms</module>
