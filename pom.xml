@@ -80,7 +80,7 @@
         <infinispan.version>11.0.9.Final</infinispan.version>
         <infinispan.protostream.processor.version>4.3.4.Final</infinispan.protostream.processor.version>
         <jackson.version>2.12.1</jackson.version>
-        <jackson.databind.version>${jackson.version}</jackson.databind.version>
+        <jackson.databind.version>2.12.7.1</jackson.databind.version>
         <jackson.annotations.version>${jackson.databind.version}</jackson.annotations.version>
         <jakarta.mail.version>1.6.5</jakarta.mail.version>
         <jboss-jaxrs-api_2.1_spec>2.0.1.Final</jboss-jaxrs-api_2.1_spec>
@@ -254,7 +254,7 @@
         </developer>
     </developers>
 
-    <contributors></contributors>
+    <contributors/>
 
     <modules>
         <module>boms</module>
