@@ -254,7 +254,7 @@
         </developer>
     </developers>
 
-    <contributors></contributors>
+    <contributors/>
 
     <modules>
         <module>boms</module>
@@ -1948,7 +1948,7 @@
                 <apache.httpcomponents.fuse.version>4.5.2</apache.httpcomponents.fuse.version>
                 <apache.httpcomponents.httpcore.fuse.version>4.4.4</apache.httpcomponents.httpcore.fuse.version>
                 <ee.maven.groupId>org.wildfly</ee.maven.groupId>
-                <ee.maven.version>${wildfly.version}</ee.maven.version>
+                <ee.maven.version>28.0.0.Final</ee.maven.version>
                 <product.filename.version>${project.version}</product.filename.version>
             </properties>
         </profile>
@@ -1984,7 +1984,7 @@
                 <apache.httpcomponents.httpcore.fuse.version>4.4.4.redhat-2</apache.httpcomponents.httpcore.fuse.version>
                 <product.default-profile>product</product.default-profile>
                 <ee.maven.groupId>org.jboss.eap</ee.maven.groupId>
-                <ee.maven.version>${eap.version}</ee.maven.version>
+                <ee.maven.version>28.0.0.Final</ee.maven.version>
                 <!-- Properties that drive the names of various directories produced by and used in the build -->
                 <server.output.dir.prefix>${product.name}</server.output.dir.prefix>
                 <!-- Version suffix that is appended to directories. Default is the maven GAV version but this can be edited to use a short form version -->
