@@ -1,11 +1,11 @@
-# LINTEST-423: Fix for Okta Push Groups Stale ExternalId Issue
+# LINTEST-423 / LINTEST-439: Fix for Okta Push Groups Stale ExternalId Issue
 
 ## Issue Summary
 
-**Ticket**: LINTEST-423  
+**Tickets**: LINTEST-423, LINTEST-439  
 **Tenant**: apex.atlan.com  
 **Customer**: Flo Barot Jr  
-**Affected Group**: grpAtlanProdWorkflowAdmin
+**Affected Group**: grpAtlanProdWorkflowAdmin (apex) (copy) Test 2 (copy) (copy)
 
 ### Problem
 

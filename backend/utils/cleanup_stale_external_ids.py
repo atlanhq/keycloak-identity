@@ -18,7 +18,7 @@ Usage:
     # Clean up by specific externalId
     python cleanup_stale_external_ids.py --tenant apex.atlan.com --external-id 2ea7c8f7-7506-4b71-a53c-f307aedb647d
 
-Issue: LINTEST-423 - Okta Push Groups stale externalId cleanup
+Issue: LINTEST-423 / LINTEST-439 - Okta Push Groups stale externalId cleanup
 """
 
 import argparse

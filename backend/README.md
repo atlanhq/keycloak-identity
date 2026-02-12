@@ -2,7 +2,7 @@
 
 This directory contains backend modules for handling SCIM group provisioning from Okta to Keycloak/Atlan, with specific focus on resolving stale `externalId` mapping issues.
 
-## Issue Resolution: LINTEST-423
+## Issue Resolution: LINTEST-423 / LINTEST-439
 
 **Problem**: Okta Push Groups failing with stale `externalId` errors when trying to push groups to Atlan via SCIM.
 

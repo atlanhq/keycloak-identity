@@ -5,7 +5,7 @@ This module manages the externalId mappings between Okta groups and Keycloak gro
 in the SCIM integration. It provides utilities for detecting and cleaning up
 orphaned or stale mappings.
 
-Issue: LINTEST-423 - Handling stale externalId mappings for group provisioning
+Issue: LINTEST-423 / LINTEST-439 - Handling stale externalId mappings for group provisioning
 """
 
 import logging

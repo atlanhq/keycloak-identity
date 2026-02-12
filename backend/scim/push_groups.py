@@ -4,7 +4,7 @@ SCIM Push Groups Handler for Okta to Atlan Integration
 This module handles the SCIM group provisioning from Okta to Atlan/Keycloak,
 with specific handling for stale externalId mappings that can cause push failures.
 
-Issue: LINTEST-423 - Okta Push Groups: stale externalId / orphaned mapping
+Issue: LINTEST-423 / LINTEST-439 - Okta Push Groups: stale externalId / orphaned mapping
 """
 
 import logging
