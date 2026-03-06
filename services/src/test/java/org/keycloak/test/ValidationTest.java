@@ -40,6 +40,11 @@ public class ValidationTest {
         Assert.assertFalse(Validation.isEmailValid("abc@.foo"));
         Assert.assertFalse(Validation.isEmailValid("abc@foo."));
         Assert.assertFalse(Validation.isEmailValid("abc@foo..bar"));
+
+        // Verify employee IDs and non-email identifiers are correctly rejected (GOVFOUN-272)
+        Assert.assertFalse(Validation.isEmailValid("lid1r6c"));
+        Assert.assertFalse(Validation.isEmailValid("12345"));
+        Assert.assertFalse(Validation.isEmailValid("emp-001"));
     }
     
     @Test

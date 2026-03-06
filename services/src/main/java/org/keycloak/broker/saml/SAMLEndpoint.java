@@ -72,6 +72,7 @@ import org.keycloak.services.ErrorPage;
 import org.keycloak.services.Urls;
 import org.keycloak.services.managers.AuthenticationManager;
 import org.keycloak.services.messages.Messages;
+import org.keycloak.services.validation.Validation;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
@@ -491,7 +492,12 @@ public class SAMLEndpoint {
 
                 //SAML Spec 2.2.2 Format is optional
                 if (subjectNameID != null && subjectNameID.getFormat() != null && subjectNameID.getFormat().toString().equals(JBossSAMLURIConstants.NAMEID_FORMAT_EMAIL.get())) {
-                    identity.setEmail(subjectNameID.getValue());
+                    String nameIdValue = subjectNameID.getValue();
+                    if (nameIdValue != null && Validation.isEmailValid(nameIdValue)) {
+                        identity.setEmail(nameIdValue);
+                    } else {
+                        logger.warnf("SAML NameID has email format but value '%s' is not a valid email address. Skipping email assignment for provider '%s'.", nameIdValue, config.getAlias());
+                    }
                 }
 
                 if (config.isStoreToken()) {
@@ -527,8 +533,13 @@ public class SAMLEndpoint {
                 }
                 if (assertion.getAttributeStatements() != null ) {
                     String email = getX500Attribute(assertion, X500SAMLProfileConstants.EMAIL);
-                    if (email != null)
-                        identity.setEmail(email);
+                    if (email != null) {
+                        if (Validation.isEmailValid(email)) {
+                            identity.setEmail(email);
+                        } else {
+                            logger.warnf("SAML assertion contains email attribute with invalid value '%s'. Skipping email assignment for provider '%s'.", email, config.getAlias());
+                        }
+                    }
                 }
 
                 String brokerUserId = config.getAlias() + "." + principal;
